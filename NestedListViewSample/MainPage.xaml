@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="NestedListViewSample.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <StackLayout>
+        <Button Text="Vertical List Inside VerticalListView" Clicked="Button_Clicked"/>
+        <Button Text="Horizontal List Inside VerticalListView" Clicked="Button_Clicked_1"/>
+        <Button Text="ListView With GroupHeaders" Clicked="Button_Clicked_2"/>
+        <Button Text="Expandable ListView" Clicked="Button_Clicked_3"/>
+        <Button Text="ListView with different Templates" Clicked="Button_Clicked_4"/>
+    </StackLayout>
+
+</ContentPage>

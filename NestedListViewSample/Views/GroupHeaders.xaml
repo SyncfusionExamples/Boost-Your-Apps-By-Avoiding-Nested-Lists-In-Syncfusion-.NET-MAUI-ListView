@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NestedListViewSample.GroupHeaders"
+             xmlns:local="clr-namespace:NestedListViewSample"
+             xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:sfData="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
+             Title="GroupHeaders">
+
+    <ContentPage.BindingContext>
+        <local:CatalogViewModel/>
+    </ContentPage.BindingContext>
+    
+    <sfListView:SfListView
+            x:Name="ListView"
+            ItemsSource="{Binding GroupedProducts}"
+            IsStickyGroupHeader="True"
+            GroupHeaderSize="50"
+            SelectionMode="None">
+
+        <sfListView:SfListView.DataSource>
+            <sfData:DataSource>
+                <sfData:DataSource.GroupDescriptors>
+                    <!-- Group by the parent category name -->
+                    <sfData:GroupDescriptor PropertyName="CategoryName" />
+                </sfData:DataSource.GroupDescriptors>
+            </sfData:DataSource>
+        </sfListView:SfListView.DataSource>
+
+        <sfListView:SfListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Grid Padding="12">
+                    <Label Text="{Binding Key}" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="18" />
+                </Grid>
+            </DataTemplate>
+        </sfListView:SfListView.GroupHeaderTemplate>
+
+        <sfListView:SfListView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="{Binding Name}"
+                            FontSize="13"
+                            LineBreakMode="TailTruncation"
+                            HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            TextColor="#2E7D32"
+                            HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </DataTemplate>
+        </sfListView:SfListView.ItemTemplate>
+    </sfListView:SfListView>
+
+</ContentPage>
