@@ -24,10 +24,9 @@
             </Grid>
         </DataTemplate>
 
-        <local:RowTemplateSelector
-            x:Key="RowTemplateSelector"
-            ParentTemplate="{StaticResource ParentTemplate}"
-            ChildTemplate="{StaticResource ChildTemplate}"/>
+        <local:RowTemplateSelector x:Key="RowTemplateSelector"
+                                   ParentTemplate="{StaticResource ParentTemplate}"
+                                   ChildTemplate="{StaticResource ChildTemplate}"/>
     </ContentPage.Resources>
 
     <ContentPage.BindingContext>
@@ -35,7 +34,7 @@
     </ContentPage.BindingContext>
 
     <sfListView:SfListView ItemsSource="{Binding Rows}"
-                       ItemTemplate="{StaticResource RowTemplateSelector}"
-                       SelectionMode="None" />
+                           ItemTemplate="{StaticResource RowTemplateSelector}"
+                           SelectionMode="None" />
 
 </ContentPage>

@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NestedListViewSample.VerticalListView"
-              xmlns:local="clr-namespace:NestedListViewSample"
+             xmlns:local="clr-namespace:NestedListViewSample"
              xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="VerticalListView">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MultiplyConverter x:Key="MultiplyConverter" />
@@ -17,29 +18,27 @@
 
     <!-- Vertical inside vertical (avoid scroll conflicts) -->
 
-    <sfListView:SfListView
-                 ItemsSource="{Binding Categories}"
-                 SelectionMode="None"
-                 AutoFitMode="Height"
-                 ItemSpacing="12">
+    <sfListView:SfListView ItemsSource="{Binding Categories}"
+                           SelectionMode="None"
+                           AutoFitMode="Height"
+                           ItemSpacing="12">
         <sfListView:SfListView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding Name}"
-                                FontAttributes="Bold"
-                                FontSize="16" />
+                           FontAttributes="Bold"
+                           FontSize="16" />
 
                     <!-- Inner vertical SfListView:
                               1) Disable inner scrolling by giving exact height
                               2) Height = itemHeight * count (+ spacing/margins if needed)
                               3) Keep templates light for performance -->
-                    <sfListView:SfListView
-                             ItemsSource="{Binding Products}"
-                             SelectionMode="None"
-                             AutoFitMode="None"
-                             ItemSpacing="4"
-                             IsScrollingEnabled="False"
-                             HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=72}">
+                    <sfListView:SfListView ItemsSource="{Binding Products}"
+                                           SelectionMode="None"
+                                           AutoFitMode="None"
+                                           ItemSpacing="4"
+                                           IsScrollingEnabled="False"
+                                           HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=72}">
                         <sfListView:SfListView.ItemsLayout>
                             <sfListView:LinearLayout />
                         </sfListView:SfListView.ItemsLayout>
@@ -47,13 +46,12 @@
                         <sfListView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="60,*"
-                                         HeightRequest="68"
-                                         Padding="6"
-                                         BackgroundColor="{DynamicResource Gray100}">
+                                      HeightRequest="68"
+                                      Padding="6"
+                                      BackgroundColor="{DynamicResource Gray100}">
                                     <VerticalStackLayout Grid.Column="1" Spacing="2">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" />
-                                        <Label Text="{Binding Price, StringFormat='${0:F2}'}"
-                                                    TextColor="#2E7D32" />
+                                        <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="#2E7D32" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </DataTemplate>

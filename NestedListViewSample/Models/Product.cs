@@ -1,17 +1,39 @@
 ﻿using System.Collections.ObjectModel;
-
 namespace NestedListViewSample;
 
-public class Product
+/// <summary>
+/// Represents a product with display name, price, and its category label (for grouping).
+/// </summary>
+public sealed class Product
 {
-    public string Name { get; set; }
+    /// <summary>
+    /// Product name (non-null for stable bindings).
+    /// </summary>
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Product price.
+    /// </summary>
     public decimal Price { get; set; }
 
-    public string CategoryName { get; set; }
+    /// <summary>
+    /// Category label used for grouping in SfListView.
+    /// </summary>
+    public string CategoryName { get; set; } = string.Empty;
 }
 
-public class Category
+/// <summary>
+/// Represents a category containing a list of products.
+/// </summary>
+public sealed class Category
 {
-    public string Name { get; set; }
-    public ObservableCollection<Product> Products { get; set; } = new();
+    /// <summary>
+    /// Category name (non-null for stable bindings).
+    /// </summary>
+    public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Products under this category.
+    /// </summary>
+    public ObservableCollection<Product> Products { get; } = new();
 }

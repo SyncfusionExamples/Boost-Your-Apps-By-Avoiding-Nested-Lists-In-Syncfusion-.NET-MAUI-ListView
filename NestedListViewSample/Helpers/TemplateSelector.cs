@@ -15,7 +15,8 @@ namespace NestedListViewSample
             return card.Kind switch
             {
                 RowKind.Parent => ParentTemplate,
-                RowKind.Child => ChildTemplate
+                RowKind.Child => ChildTemplate,
+                _ => ChildTemplate
             };
         }
     }

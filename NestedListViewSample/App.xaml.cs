@@ -1,4 +1,6 @@
-﻿namespace NestedListViewSample
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace NestedListViewSample
 {
     public partial class App : Application
     {

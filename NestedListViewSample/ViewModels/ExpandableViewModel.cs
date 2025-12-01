@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
-
 namespace NestedListViewSample;
 
 public class ExpandableViewModel
 {
+    /// <summary>
+    /// Seed data of food categories and their items for display in a single SfListView.
+    /// </summary>
     public ObservableCollection<FoodCategory> Categories { get; } = new()
     {
         new FoodCategory("Fruits", new() {  new FoodItem("Apple"), 

@@ -2,11 +2,26 @@
 
 namespace NestedListViewSample;
 
+/// <summary>
+/// Provides catalog data for the UI, including category-wise products 
+/// and a flattened, category-tagged product list for grouping scenarios.
+/// </summary>
 public class CatalogViewModel
 {
+    /// <summary>
+    /// Gets the product categories, each containing its own product collection.
+    /// </summary>
     public ObservableCollection<Category> Categories { get; }
+
+    /// <summary>
+    /// Gets a flattened list of products where each product carries its category name.
+    /// Useful for a single SfListView with grouping by CategoryName.
+    /// </summary>
     public ObservableCollection<Product> GroupedProducts { get; }
 
+    /// <summary>
+    /// Initializes the catalog with sample data and derives the flattened grouped list.
+    /// </summary>
     public CatalogViewModel()
     {
         Categories = new ObservableCollection<Category>

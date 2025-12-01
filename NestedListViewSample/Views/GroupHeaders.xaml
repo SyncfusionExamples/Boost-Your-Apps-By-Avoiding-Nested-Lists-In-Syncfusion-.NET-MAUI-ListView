@@ -11,12 +11,11 @@
         <local:CatalogViewModel/>
     </ContentPage.BindingContext>
     
-    <sfListView:SfListView
-            x:Name="ListView"
-            ItemsSource="{Binding GroupedProducts}"
-            IsStickyGroupHeader="True"
-            GroupHeaderSize="50"
-            SelectionMode="None">
+    <sfListView:SfListView x:Name="ListView"
+                           ItemsSource="{Binding GroupedProducts}"
+                           IsStickyGroupHeader="True"
+                           GroupHeaderSize="50"
+                           SelectionMode="None">
 
         <sfListView:SfListView.DataSource>
             <sfData:DataSource>
@@ -39,14 +38,14 @@
             <DataTemplate>
                 <VerticalStackLayout Spacing="6">
                     <Label Text="{Binding Name}"
-                            FontSize="13"
-                            LineBreakMode="TailTruncation"
-                            HorizontalTextAlignment="Center" />
+                           FontSize="13"
+                           LineBreakMode="TailTruncation"
+                           HorizontalTextAlignment="Center" />
                     <Label Text="{Binding Price, StringFormat='${0:F2}'}"
-                            FontAttributes="Bold"
-                            FontSize="12"
-                            TextColor="#2E7D32"
-                            HorizontalTextAlignment="Center" />
+                           FontAttributes="Bold"
+                           FontSize="12"
+                           TextColor="#2E7D32"
+                           HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </DataTemplate>
         </sfListView:SfListView.ItemTemplate>

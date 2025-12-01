@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 
 namespace NestedListViewSample
 {
-    public class BoolToChevronConverter : IValueConverter
+    public class BoolToIconConverter  : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

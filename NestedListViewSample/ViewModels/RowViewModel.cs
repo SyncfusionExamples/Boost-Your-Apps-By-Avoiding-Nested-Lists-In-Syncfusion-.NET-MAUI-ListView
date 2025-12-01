@@ -1,15 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-
 namespace NestedListViewSample;
 
 public class RowViewModel
 {
-
+    /// <summary>
+    /// Flat list of parent and child rows for a single SfListView.
+    /// </summary>
     public ObservableCollection<Row> Rows { get; } = new();
 
+    /// <summary>
+    /// Seeds demo data. Parent rows control related Child rows via <see cref="Row.ParentId"/>.
+    /// </summary>
     public RowViewModel()
     {
-
         Rows = new ObservableCollection<Row>
         {
             new Row { Kind = RowKind.Parent, Text = "Parent 1", ParentId = "P1" },
