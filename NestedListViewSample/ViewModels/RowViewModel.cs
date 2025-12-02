@@ -1,6 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 namespace NestedListViewSample;
 
+/// <summary>
+/// View model that exposes a flat list of parent/child rows for a single SfListView.
+/// </summary>
+/// <remarks>
+/// Rows are ordered so parent rows precede their related child rows (linked by ParentId).
+/// Suitable for DataTemplateSelector scenarios with heterogeneous row types.
+/// </remarks>
 public class RowViewModel
 {
     /// <summary>

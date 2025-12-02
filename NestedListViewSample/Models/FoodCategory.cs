@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 namespace NestedListViewSample;
 
+/// <summary>
+/// Represents a food category that can be expanded/collapsed in the UI.
+/// </summary>
 public sealed class FoodCategory : BindableObject
 {
     /// <summary>
@@ -40,6 +43,9 @@ public sealed class FoodCategory : BindableObject
     }
 }
 
+/// <summary>
+/// Represents a single food item.
+/// </summary>
 public sealed class FoodItem
 {
     /// <summary>
@@ -47,6 +53,11 @@ public sealed class FoodItem
     /// </summary>
     public string Name { get; }
 
+    /// <summary>
+    /// Creates a food item with a display name.
+    /// </summary>
+    /// <param name="name">Display name of the item.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> is null or whitespace.</exception>
     public FoodItem(string name)
     {
         if (string.IsNullOrWhiteSpace(name))

@@ -1,4 +1,4 @@
-# alternatives-nested-listview-dotnet-maui
+# Boost Your Apps By Avoiding Nested Lists In Syncfusion .NET MAUI ListView
 
 Syncfusion® .NET MAUI List View is ideal for virtualized, data-heavy UIs. Nesting one List View inside another, however, is a common anti-pattern that degrades performance. Nested List Views trigger extra measuring, compete for scroll gestures, and waste memory.
 

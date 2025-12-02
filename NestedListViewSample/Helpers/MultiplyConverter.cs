@@ -1,12 +1,16 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.Maui.Controls;
+﻿using System.Globalization;
 
 namespace NestedListViewSample
 {
+    /// <summary>
+    /// Multiplies the input value (count) by a factor passed via the converter parameter.
+    /// Accepts count as int or double, and factor as double or parsable string (InvariantCulture).
+    /// </summary>
     public class MultiplyConverter : IValueConverter
     {
-        // Returns count * factor
+        /// <summary>
+        /// Converts a count to a size by multiplying with a factor.
+        /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var count = 0d;
@@ -21,6 +25,9 @@ namespace NestedListViewSample
             return count * factor;
         }
 
+        /// <summary>
+        /// Not supported. Reverse conversion is not implemented.
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
             throw new NotSupportedException();
     }

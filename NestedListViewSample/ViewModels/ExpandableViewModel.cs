@@ -1,6 +1,13 @@
 ﻿using System.Collections.ObjectModel;
 namespace NestedListViewSample;
 
+/// <summary>
+/// View model that exposes expandable categories with their items for a single SfListView.
+/// </summary>
+/// <remarks>
+/// Each <see cref="FoodCategory"/> can be expanded/collapsed in the UI to show its <see cref="FoodCategory.Items"/>.
+/// Intended for an expandable-list pattern without nesting ListViews.
+/// </remarks>
 public class ExpandableViewModel
 {
     /// <summary>

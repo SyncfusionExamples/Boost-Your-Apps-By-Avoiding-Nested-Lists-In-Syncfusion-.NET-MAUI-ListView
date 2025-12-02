@@ -13,7 +13,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:BoolToIconConverter  x:Key="BoolToIconConverter " />
+            <local:BoolToIconConverter  x:Key="BoolToIconConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -43,7 +43,7 @@
                                    VerticalOptions="Center"/>
 
                             <Label Grid.Column="1"
-                                   Text="{Binding IsExpanded, Converter={StaticResource BoolToIconConverter }}"
+                                   Text="{Binding IsExpanded, Converter={StaticResource BoolToIconConverter}}"
                                    FontFamily="MauiSampleFontIcon"
                                    VerticalOptions="Center"/>
 
