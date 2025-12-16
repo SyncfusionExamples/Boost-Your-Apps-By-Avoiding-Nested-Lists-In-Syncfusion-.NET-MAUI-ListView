@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 
 namespace NestedListViewSample;
 
@@ -98,16 +98,21 @@ public class CatalogViewModel
             }
         };
 
-        // Flatten Categories -> Products and carry the Category Name
-        GroupedProducts = new ObservableCollection<Product>(
-            Categories.SelectMany(cat =>
-                cat.Products.Select(p => new Product
+        // Build a flat list: a header product per category followed by its items
+        var flat = new List<Product>();
+        foreach (var cat in Categories)
+        {
+            flat.Add(new Product { CategoryName = cat.Name, IsHeader = true });
+            foreach (var p in cat.Products)
+            {
+                flat.Add(new Product
                 {
                     Name = p.Name,
                     Price = p.Price,
                     CategoryName = cat.Name
-                })
-            )
-        );
+                });
+            }
+        }
+        GroupedProducts = new ObservableCollection<Product>(flat);
     }
 }

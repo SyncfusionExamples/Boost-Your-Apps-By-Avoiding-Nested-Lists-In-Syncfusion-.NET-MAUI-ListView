@@ -6,35 +6,40 @@
              xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="TemplatePage">
 
-    <ContentPage.Resources>
-        <DataTemplate x:Key="ParentTemplate">
-            <Grid Padding="12">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Label Text="{Binding Text}" FontAttributes="Bold"/>
-                <Image Grid.Column="1" Source="chevron.png"/>
-            </Grid>
-        </DataTemplate>
-
-        <DataTemplate x:Key="ChildTemplate">
-            <Grid Padding="32,8,12,8">
-                <Label Text="{Binding Text}" FontSize="13"/>
-            </Grid>
-        </DataTemplate>
-
-        <local:RowTemplateSelector x:Key="RowTemplateSelector"
-                                   ParentTemplate="{StaticResource ParentTemplate}"
-                                   ChildTemplate="{StaticResource ChildTemplate}"/>
-    </ContentPage.Resources>
-
     <ContentPage.BindingContext>
-        <local:RowViewModel/>
+        <local:CatalogViewModel />
     </ContentPage.BindingContext>
 
-    <sfListView:SfListView ItemsSource="{Binding Rows}"
-                           ItemTemplate="{StaticResource RowTemplateSelector}"
-                           SelectionMode="None" />
+    <ContentPage.Resources>
+        <!-- Header template shows the CategoryName -->
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Padding="12">
+                <Label Text="{Binding CategoryName}"
+                       BackgroundColor="LightGray"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       HorizontalTextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
 
+        <!-- Item template shows Name and Price -->
+        <DataTemplate x:Key="ItemTemplate">
+            <Grid Padding="12" ColumnDefinitions="*,Auto">
+                <Label Text="{Binding Name}" />
+                <Label Grid.Column="1"
+                       Text="{Binding Price, StringFormat='${0:F2}'}"
+                       FontAttributes="Bold"
+                       TextColor="#2E7D32" />
+            </Grid>
+        </DataTemplate>
+
+        <!-- Selector that chooses between header and item templates -->
+        <local:ProductTemplateSelector x:Key="ProductTemplateSelector"
+                                       HeaderTemplate="{StaticResource HeaderTemplate}"
+                                       ItemTemplate="{StaticResource ItemTemplate}" />
+    </ContentPage.Resources>
+
+    <sfListView:SfListView ItemsSource="{Binding GroupedProducts}"
+                           SelectionMode="None"
+                           ItemTemplate="{StaticResource ProductTemplateSelector}" />
 </ContentPage>

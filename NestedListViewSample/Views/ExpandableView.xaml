@@ -3,23 +3,20 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NestedListViewSample"
-             xmlns:localCore="clr-namespace:SampleBrowser.Maui.Base;assembly=SampleBrowser.Maui.Base"
-             xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-             xmlns:thickness="clr-namespace:Microsoft.Maui;assembly=Microsoft.Maui" >
+             xmlns:ListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView">
 
     <ContentPage.BindingContext>
-        <local:ExpandableViewModel x:Name="viewModel"/>
+        <local:CatalogViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:BoolToIconConverter  x:Key="BoolToIconConverter" />
+            <local:BoolToIconConverter x:Key="BoolToIconConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <ListView:SfListView x:Name="SfList"
-                             ItemsSource="{Binding Categories}"
+        <ListView:SfListView ItemsSource="{Binding Categories}"
                              SelectionMode="None"
                              AutoFitMode="DynamicHeight">
             <ListView:SfListView.ItemTemplate>
@@ -31,13 +28,14 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
+                        <!-- Header with tap to toggle IsExpanded on Category (from Models/Product.cs) -->
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Text="{Binding Title}"
+                            <Label Text="{Binding Name}"
                                    FontAttributes="Bold"
                                    FontSize="21"
                                    VerticalOptions="Center"/>
@@ -54,19 +52,29 @@
 
                         <BoxView Grid.Row="1" HeightRequest="1" Color="Black"/>
 
-                        <!-- Items (visible when expanded) -->
-                        <StackLayout Grid.Row="2"
-                                     IsVisible="{Binding IsExpanded}"
-                                     BindableLayout.ItemsSource="{Binding Items}"
-                                     Spacing="5">
-                            <BindableLayout.ItemTemplate>
+                        <!-- Items visible when expanded -->
+                        <ListView:SfListView Grid.Row="2"
+                                             IsVisible="{Binding IsExpanded}"
+                                             ItemsSource="{Binding Products}"
+                                             SelectionMode="None"
+                                             ItemSpacing="4"
+                                             IsScrollingEnabled="False"
+                                             AutoFitMode="DynamicHeight">
+                            <ListView:SfListView.ItemsLayout>
+                                <ListView:LinearLayout />
+                            </ListView:SfListView.ItemsLayout>
+                            <ListView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid Padding="24,8">
+                                    <Grid Padding="24,8" ColumnDefinitions="*,Auto">
                                         <Label Text="{Binding Name}" />
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Price, StringFormat='${0:F2}'}"
+                                               FontAttributes="Bold"
+                                               TextColor="#2E7D32" />
                                     </Grid>
                                 </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </StackLayout>
+                            </ListView:SfListView.ItemTemplate>
+                        </ListView:SfListView>
                     </Grid>
                 </DataTemplate>
             </ListView:SfListView.ItemTemplate>
