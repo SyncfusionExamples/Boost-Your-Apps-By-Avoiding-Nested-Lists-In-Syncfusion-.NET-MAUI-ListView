@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NestedListViewSample.HorizontalListView"
              xmlns:local="clr-namespace:NestedListViewSample"
-             xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="HorizontalListView">
     
     <ContentPage.Resources>
@@ -16,13 +16,12 @@
         <local:CatalogViewModel />
     </ContentPage.BindingContext>
 
-
     <!-- Vertical outer list with HORIZONTAL inner list -->
-    <sfListView:SfListView ItemsSource="{Binding Categories}"
+    <listView:SfListView ItemsSource="{Binding Categories}"
                            SelectionMode="None"
                            AutoFitMode="DynamicHeight"
                            ItemSpacing="8">
-        <sfListView:SfListView.ItemTemplate>
+        <listView:SfListView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding Name}"
@@ -30,18 +29,18 @@
                            FontSize="16" />
 
                     <!-- Inner horizontal SfListView -->
-                    <sfListView:SfListView ItemsSource="{Binding Products}"
+                    <listView:SfListView ItemsSource="{Binding Products}"
                                            SelectionMode="None"
                                            ItemSpacing="5"
                                            HeightRequest="120"
                                            Orientation="Horizontal"
                                            AutoFitMode="DynamicHeight">
                         
-                        <sfListView:SfListView.ItemsLayout>
-                            <sfListView:LinearLayout />
-                        </sfListView:SfListView.ItemsLayout>
+                        <listView:SfListView.ItemsLayout>
+                            <listView:LinearLayout />
+                        </listView:SfListView.ItemsLayout>
 
-                        <sfListView:SfListView.ItemTemplate>
+                        <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <Frame HasShadow="False"
                                        BorderColor="{DynamicResource Gray300}"
@@ -62,10 +61,10 @@
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
-                        </sfListView:SfListView.ItemTemplate>
-                    </sfListView:SfListView>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
                 </VerticalStackLayout>
             </DataTemplate>
-        </sfListView:SfListView.ItemTemplate>
-    </sfListView:SfListView>
+        </listView:SfListView.ItemTemplate>
+    </listView:SfListView>
 </ContentPage>

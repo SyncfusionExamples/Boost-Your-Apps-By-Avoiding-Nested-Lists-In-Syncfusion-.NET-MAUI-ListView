@@ -19,9 +19,13 @@ namespace NestedListViewSample
         protected override DataTemplate OnSelectTemplate(object? item, BindableObject container)
         {
             if (item is Product p && p.IsHeader)
+            {
                 return HeaderTemplate ?? ItemTemplate ?? new DataTemplate(() => new ContentView());
-
-            return ItemTemplate ?? HeaderTemplate ?? new DataTemplate(() => new ContentView());
+            }
+            else
+            {
+                return ItemTemplate ?? HeaderTemplate ?? new DataTemplate(() => new ContentView());
+            }
         }
     }
 }

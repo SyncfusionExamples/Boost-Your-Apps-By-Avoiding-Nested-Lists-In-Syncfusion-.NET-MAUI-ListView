@@ -3,38 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NestedListViewSample.GroupHeaders"
              xmlns:local="clr-namespace:NestedListViewSample"
-             xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-             xmlns:sfData="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:data="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
              Title="GroupHeaders">
 
     <ContentPage.BindingContext>
         <local:CatalogViewModel/>
     </ContentPage.BindingContext>
     
-    <sfListView:SfListView x:Name="ListView"
-                           ItemsSource="{Binding GroupedProducts}"
-                           IsStickyGroupHeader="True"
-                           GroupHeaderSize="50"
-                           SelectionMode="None">
+    <listView:SfListView x:Name="ListView"
+                         ItemsSource="{Binding GroupedProducts}"
+                         IsStickyGroupHeader="True"
+                         GroupHeaderSize="50"
+                         SelectionMode="None">
 
-        <sfListView:SfListView.DataSource>
-            <sfData:DataSource>
-                <sfData:DataSource.GroupDescriptors>
-                    <!-- Group by the parent category name -->
-                    <sfData:GroupDescriptor PropertyName="CategoryName" />
-                </sfData:DataSource.GroupDescriptors>
-            </sfData:DataSource>
-        </sfListView:SfListView.DataSource>
+        <listView:SfListView.DataSource>
+            <data:DataSource>
+                <data:DataSource.GroupDescriptors>
+                    <data:GroupDescriptor PropertyName="CategoryName" />
+                </data:DataSource.GroupDescriptors>
+            </data:DataSource>
+        </listView:SfListView.DataSource>
 
-        <sfListView:SfListView.GroupHeaderTemplate>
+        <listView:SfListView.GroupHeaderTemplate>
             <DataTemplate>
                 <Grid Padding="12">
                     <Label Text="{Binding Key}" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="18" />
                 </Grid>
             </DataTemplate>
-        </sfListView:SfListView.GroupHeaderTemplate>
+        </listView:SfListView.GroupHeaderTemplate>
 
-        <sfListView:SfListView.ItemTemplate>
+        <listView:SfListView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout Spacing="6">
                     <Label Text="{Binding Name}"
@@ -48,7 +47,7 @@
                            HorizontalTextAlignment="Center" />
                 </VerticalStackLayout>
             </DataTemplate>
-        </sfListView:SfListView.ItemTemplate>
-    </sfListView:SfListView>
+        </listView:SfListView.ItemTemplate>
+    </listView:SfListView>
 
 </ContentPage>

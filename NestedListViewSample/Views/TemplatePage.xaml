@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NestedListViewSample.TemplatePage"
              xmlns:local="clr-namespace:NestedListViewSample"
-             xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="TemplatePage">
 
     <ContentPage.BindingContext>
@@ -39,7 +39,7 @@
                                        ItemTemplate="{StaticResource ItemTemplate}" />
     </ContentPage.Resources>
 
-    <sfListView:SfListView ItemsSource="{Binding GroupedProducts}"
+    <listView:SfListView ItemsSource="{Binding GroupedProducts}"
                            SelectionMode="None"
                            ItemTemplate="{StaticResource ProductTemplateSelector}" />
 </ContentPage>

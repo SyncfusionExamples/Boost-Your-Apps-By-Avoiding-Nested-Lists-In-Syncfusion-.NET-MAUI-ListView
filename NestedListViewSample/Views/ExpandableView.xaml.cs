@@ -11,8 +11,7 @@ namespace NestedListViewSample
         }
 
         /// <summary>
-        /// Handles taps on a category header and toggles its IsExpanded state
-        /// to show or hide the associated product list.
+        /// Handles taps on a category header and toggles its IsExpanded state to show or hide the associated product list.
         /// </summary>
         /// <param name="sender">The header Grid that was tapped.</param>
         /// <param name="e">Tap event arguments.</param>

@@ -4,11 +4,11 @@
              x:Class="NestedListViewSample.MainPage">
 
     <StackLayout>
-        <Button Text="Vertical List Inside VerticalListView" Clicked="Button_Clicked"/>
-        <Button Text="Horizontal List Inside VerticalListView" Clicked="Button_Clicked_1"/>
-        <Button Text="ListView With GroupHeaders" Clicked="Button_Clicked_2"/>
-        <Button Text="Expandable ListView" Clicked="Button_Clicked_3"/>
-        <Button Text="ListView with different Templates" Clicked="Button_Clicked_4"/>
+        <Button x:Name="VerticalNestedListView" Text="Vertical List Inside VerticalListView" Clicked="VerticalNestedListView_Clicked"/>
+        <Button x:Name="HorizontalNestedListView" Text="Horizontal List Inside VerticalListView" Clicked="HorizontalNestedListView_Clicked"/>
+        <Button x:Name="GroupHeaders" Text="ListView With GroupHeaders" Clicked="GroupHeaders_Clicked"/>
+        <Button x:Name="ExpandableListView" Text="Expandable ListView" Clicked="ExpandableListView_Clicked"/>
+        <Button x:Name="Templatespage" Text="ListView with different Templates" Clicked="TemplatesPage_Clicked"/>
     </StackLayout>
 
 </ContentPage>

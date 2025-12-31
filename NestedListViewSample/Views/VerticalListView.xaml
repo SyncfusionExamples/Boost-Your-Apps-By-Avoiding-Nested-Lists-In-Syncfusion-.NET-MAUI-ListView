@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NestedListViewSample.VerticalListView"
              xmlns:local="clr-namespace:NestedListViewSample"
-             xmlns:sfListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="VerticalListView">
     
     <ContentPage.Resources>
@@ -17,12 +17,10 @@
     </ContentPage.BindingContext>
 
     <!-- Vertical inside vertical (avoid scroll conflicts) -->
-
-    <sfListView:SfListView ItemsSource="{Binding Categories}"
-                           SelectionMode="None"
-                           AutoFitMode="Height"
-                           ItemSpacing="12">
-        <sfListView:SfListView.ItemTemplate>
+    <listView:SfListView ItemsSource="{Binding Categories}"
+                         SelectionMode="None"
+                         AutoFitMode="Height">
+        <listView:SfListView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout Spacing="8">
                     <Label Text="{Binding Name}"
@@ -33,17 +31,17 @@
                               1) Disable inner scrolling by giving exact height
                               2) Height = itemHeight * count (+ spacing/margins if needed)
                               3) Keep templates light for performance -->
-                    <sfListView:SfListView ItemsSource="{Binding Products}"
-                                           SelectionMode="None"
-                                           AutoFitMode="None"
-                                           ItemSpacing="4"
-                                           IsScrollingEnabled="False"
-                                           HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=72}">
-                        <sfListView:SfListView.ItemsLayout>
-                            <sfListView:LinearLayout />
-                        </sfListView:SfListView.ItemsLayout>
+                    <listView:SfListView ItemsSource="{Binding Products}"
+                                         SelectionMode="None"
+                                         AutoFitMode="None"
+                                         ItemSpacing="4"
+                                         IsScrollingEnabled="False"
+                                         HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}">
+                        <listView:SfListView.ItemsLayout>
+                            <listView:LinearLayout />
+                        </listView:SfListView.ItemsLayout>
 
-                        <sfListView:SfListView.ItemTemplate>
+                        <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="60,*"
                                       HeightRequest="68"
@@ -55,10 +53,10 @@
                                     </VerticalStackLayout>
                                 </Grid>
                             </DataTemplate>
-                        </sfListView:SfListView.ItemTemplate>
-                    </sfListView:SfListView>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
                 </VerticalStackLayout>
             </DataTemplate>
-        </sfListView:SfListView.ItemTemplate>
-    </sfListView:SfListView>
+        </listView:SfListView.ItemTemplate>
+    </listView:SfListView>
 </ContentPage>

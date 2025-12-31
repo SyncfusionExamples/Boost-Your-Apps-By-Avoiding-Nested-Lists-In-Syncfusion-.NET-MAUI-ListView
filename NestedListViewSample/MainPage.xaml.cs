@@ -14,43 +14,45 @@ namespace NestedListViewSample
         }
 
         /// <summary>
-        /// Navigates to the VerticalListView sample (vertical list inside a vertical list view).
+        /// Navigates to the <see cref="VerticalListView"/> page.
         /// </summary>
-        private void Button_Clicked(object sender, EventArgs e)
+        private void VerticalNestedListView_Clicked(object sender, EventArgs e)
+
         {
             Navigation.PushAsync(new VerticalListView());
         }
 
         /// <summary>
-        /// Navigates to the HorizontalListView sample (horizontal list inside a vertical list view).
+        /// Navigates to the <see cref="HorizontalListView"/> page.
         /// </summary>
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void HorizontalNestedListView_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new HorizontalListView());
         }
 
         /// <summary>
-        /// Navigates to the GroupHeaders sample (single list view with sticky group headers).
+        /// Navigates to the <see cref="GroupHeaders"/> page.
         /// </summary>
-        private void Button_Clicked_2(object sender, EventArgs e)
+        private void GroupHeaders_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new GroupHeaders());
         }
 
         /// <summary>
-        /// Navigates to the ExpandableView sample (category expand/collapse using a single view model).
+        /// Navigates to the <see cref="ExpandableView"/> page.
         /// </summary>
-        private void Button_Clicked_3(object sender, EventArgs e)
+        private void ExpandableListView_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ExpandableView());
         }
 
         /// <summary>
-        /// Navigates to the TemplatePage sample (template selector with header and item templates).
+        /// Navigates to the <see cref="TemplatePage"/> page.
         /// </summary>
-        private void Button_Clicked_4(object sender, EventArgs e)
+        private void TemplatesPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TemplatePage());
         }
+
     }
 }

@@ -1,4 +1,4 @@
-# Boost Your Apps By Avoiding Nested Lists In Syncfusion .NET MAUI ListView
+# Boost Your Apps By Avoiding Nested Lists In Syncfusion® .NET MAUI ListView
 
 Syncfusion® .NET MAUI List View is ideal for virtualized, data-heavy UIs. Nesting one List View inside another, however, is a common anti-pattern that degrades performance. Nested List Views trigger extra measuring, compete for scroll gestures, and waste memory.
 
@@ -11,35 +11,40 @@ This sample explains why those issues occur, how to redesign with grouping, Data
 4.	Keyboard focus and accessibility navigation become confusing.
 ***
 
-## Alternatives for Nested List View in Syncfusion .NET MAUI ListView
-A)	Grouping: Use a single List View and group items by a field such as category. Show a header for each group. You keep one scroll and smooth virtualization while users still see clear sections.
+## Alternatives for Nested List View in Syncfusion® .NET MAUI ListView
+### Grouping: 
+Use a single List View and group items by a field such as category. Show a header for each group. You keep one scroll and smooth virtualization while users still see clear sections.
 
- ![Grouping](NestedListViewSample/Resources/GroupHeaders.gif)
+ ![Grouping](NestedListViewSample/Resources/Gif/GroupHeaders.gif)
 
-B)	Single List with Expand/Collapse: Use one list and let each parent row toggle its details in place. Tap to expand and tap again to collapse. Users stay in context without jumping into a nested list.
+### Single List with Expand/Collapse: 
+Use one list and let each parent row toggle its details in place. Tap to expand and tap again to collapse. Users stay in context without jumping into a nested list.
  
- ![Expand and Collapse ListView](NestedListViewSample/Resources/ExpandAndCollapse.gif)
+ ![Expand and Collapse ListView](NestedListViewSample/Resources/Gif/ExpandAndCollapse.gif)
 
-C)	Composite Item Template: For mixed row types Use a DataTemplateSelector to pick templates at runtime. Render posts, ads, dividers, or mini galleries in one List View. You retain one virtualization path and add new row types easily. 
+### Composite Item Template: 
+For mixed row types Use a DataTemplateSelector to pick templates at runtime. Render posts, ads, dividers, or mini galleries in one List View. You retain one virtualization path and add new row types easily. 
 
-![Different Templates with Selector](NestedListViewSample/Resources/TemplateSelector.gif)
+![Different Templates with Selector](NestedListViewSample/Resources/Gif/TemplateSelector.gif)
 
-## Syncfusion .NET MAUI List View tuning tips
+## Syncfusion® .NET MAUI List View tuning tips
 1.	ItemSize: Set a fixed size for uniform items to skip per-item measurement.
 2.	QueryItemSize: Use when items vary in height to measure efficiently.
 3.	Incremental loading: Load items on demand to keep memory and UI responsive.
 4.	Template hygiene: Keep item templates lightweight. Size and cache images explicitly.
                                                     
 ## If Nested ListView Is Necessary: Best Practices
-1. Horizontal List View inside a Vertical List View: Add a lightweight horizontal strip (fixed height, non-virtualized) within a vertical feed. The outer list remains the only scroll owner.
+### Horizontal List View inside a Vertical List View: 
+Add a lightweight horizontal strip (fixed height, non-virtualized) within a vertical feed. The outer list remains the only scroll owner.
 
-![Horizontal Nested List](NestedListViewSample/Resources/HorizontalNestedListView.gif)
+![Horizontal Nested List](NestedListViewSample/Resources/Gif/HorizontalNestedListView.gif)
 
-2. Vertical List View inside another Vertical List View: If required, disable inner scrolling by giving the inner list an exact height. Only the outer list should scroll. Keep inner templates light and item counts bounded.
+### Vertical List View inside another Vertical List View: 
+If required, disable inner scrolling by giving the inner list an exact height. Only the outer list should scroll. Keep inner templates light and item counts bounded.
 
-![Vertical Nested List](NestedListViewSample/Resources/VerticalNestedListView.gif)
+![Vertical Nested List](NestedListViewSample/Resources/Gif/VerticalNestedListView.gif)
 
-## Syncfusion .NET MAUI List View tuning tips
+## Syncfusion® .NET MAUI List View tuning tips
 
 1.	ItemSize: Set a fixed size for uniform items to skip per-item measurement.
 2.	QueryItemSize: Use when items vary in height to measure efficiently.
@@ -54,7 +59,7 @@ C)	Composite Item Template: For mixed row types Use a DataTemplateSelector to pi
 4.	If you need a horizontal strip inside a vertical feed, fix its height and skip inner virtualization so only the outer list does the heavy lifting.
 
 ## Troubleshooting
-Path too long exception
+### Path too long exception
 If you are facing a path too long exception when building this example project, close Visual Studio and rename the repository to a shorter name before building the project.
 
 For a step-by-step procedure, refer to the [AI-Powered Billionaire Wealth Dashboard Blog](https://www.syncfusion.com/blogs/post/ai-powered-winui-line-chart).
