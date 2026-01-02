@@ -7,14 +7,19 @@ namespace NestedListViewSample;
 public class Product
 {
     /// <summary>
-    /// Product name (non-null for stable bindings).
+    /// Name of the Product.
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
     /// <summary>
-    /// Product price.
+    /// Price of the product.
     /// </summary>
     public decimal Price { get; set; }
+
+    /// <summary>
+    /// Image of the product.
+    /// </summary>
+    public string Image { get; set; }
 
     /// <summary>
     /// Category label used for grouping in SfListView.

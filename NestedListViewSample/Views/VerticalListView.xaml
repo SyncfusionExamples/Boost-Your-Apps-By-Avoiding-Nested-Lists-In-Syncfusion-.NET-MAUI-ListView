@@ -19,7 +19,8 @@
     <!-- Vertical inside vertical (avoid scroll conflicts) -->
     <listView:SfListView ItemsSource="{Binding Categories}"
                          SelectionMode="None"
-                         AutoFitMode="Height">
+                         AutoFitMode="Height"
+                         ItemSpacing="10">
         <listView:SfListView.ItemTemplate>
             <DataTemplate>
                 <VerticalStackLayout Spacing="8">
@@ -34,23 +35,32 @@
                     <listView:SfListView ItemsSource="{Binding Products}"
                                          SelectionMode="None"
                                          AutoFitMode="None"
-                                         ItemSpacing="4"
+                                         ItemSpacing="6"
                                          IsScrollingEnabled="False"
-                                         HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=60}">
+                                         HeightRequest="{Binding Products.Count, Converter={StaticResource MultiplyConverter}, ConverterParameter=70}">
                         <listView:SfListView.ItemsLayout>
                             <listView:LinearLayout />
                         </listView:SfListView.ItemsLayout>
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <Grid ColumnDefinitions="60,*"
-                                      HeightRequest="68"
-                                      Padding="6"
-                                      BackgroundColor="{DynamicResource Gray100}">
-                                    <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Grid ColumnDefinitions="60,*,Auto"
+                                      RowDefinitions="auto, 1"
+                                      RowSpacing="3"
+                                      HeightRequest="72"
+                                      Padding="10">
+                                    <Image Source="{Binding Image}"
+                                               WidthRequest="56"
+                                               HeightRequest="56"
+                                               Aspect="AspectFit"
+                                               VerticalOptions="Center"
+                                               HorizontalOptions="Center"
+                                               Clip="EllipseGeometry Center=28,28 RadiusX=28 RadiusY=28" />
+                                    <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
                                         <Label Text="{Binding Name}" FontAttributes="Bold" />
                                         <Label Text="{Binding Price, StringFormat='${0:F2}'}" TextColor="#2E7D32" />
                                     </VerticalStackLayout>
+                                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="0.5" Color="Gray"/>
                                 </Grid>
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
