@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NestedListViewSample.GroupHeaders"
+             xmlns:local="clr-namespace:NestedListViewSample"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:data="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
+             Title="GroupHeaders">
+
+    <ContentPage.BindingContext>
+        <local:CatalogViewModel/>
+    </ContentPage.BindingContext>
+    
+    <listView:SfListView x:Name="productsListView"
+                         ItemsSource="{Binding GroupedProducts}"
+                         IsStickyGroupHeader="True"
+                         GroupHeaderSize="50"
+                         SelectionMode="None">
+
+        <listView:SfListView.DataSource>
+            <data:DataSource>
+                <data:DataSource.GroupDescriptors>
+                    <data:GroupDescriptor PropertyName="CategoryName" />
+                </data:DataSource.GroupDescriptors>
+            </data:DataSource>
+        </listView:SfListView.DataSource>
+
+        <listView:SfListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <Grid Padding="12">
+                    <Label Text="{Binding Key}" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="18" />
+                </Grid>
+            </DataTemplate>
+        </listView:SfListView.GroupHeaderTemplate>
+
+        <listView:SfListView.ItemTemplate>
+            <DataTemplate>
+                <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="5" HeightRequest="72" Padding="8">
+                    <Image Source="{Binding Image}"
+                           WidthRequest="56"
+                           HeightRequest="56"
+                           Aspect="AspectFit"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Clip="EllipseGeometry Center=28,28 RadiusX=28 RadiusY=28" />
+                    <Label Grid.Column="1"
+                           Text="{Binding Name}"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" />
+                    <Label Grid.Column="2"
+                           Text="{Binding Price, StringFormat='${0:F2}'}"
+                           FontAttributes="Bold"
+                           TextColor="#2E7D32"
+                           VerticalOptions="Center" />
+                </Grid>
+            </DataTemplate>
+        </listView:SfListView.ItemTemplate>
+    </listView:SfListView>
+
+</ContentPage>

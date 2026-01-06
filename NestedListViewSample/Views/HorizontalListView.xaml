@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NestedListViewSample.HorizontalListView"
+             xmlns:local="clr-namespace:NestedListViewSample"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             Title="HorizontalListView">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiplyConverter x:Key="MultiplyConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:CatalogViewModel />
+    </ContentPage.BindingContext>
+
+    <!-- Vertical outer list with HORIZONTAL inner list -->
+    <listView:SfListView ItemsSource="{Binding Categories}"
+                           SelectionMode="None"
+                           AutoFitMode="DynamicHeight"
+                           ItemSpacing="8">
+        <listView:SfListView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding Name}"
+                           FontAttributes="Bold"
+                           FontSize="16" />
+
+                    <!-- Inner horizontal SfListView -->
+                    <listView:SfListView ItemsSource="{Binding Products}"
+                                           SelectionMode="None"
+                                           ItemSpacing="5"
+                                           HeightRequest="120"
+                                           Orientation="Horizontal"
+                                           AutoFitMode="DynamicHeight">
+                        
+                        <listView:SfListView.ItemsLayout>
+                            <listView:LinearLayout />
+                        </listView:SfListView.ItemsLayout>
+
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame HasShadow="False"
+                                       BorderColor="{DynamicResource Gray300}"
+                                       Padding="8"
+                                       WidthRequest="120"
+                                       HeightRequest="110"
+                                       CornerRadius="8">
+                                    <VerticalStackLayout Spacing="6">
+                                        <Image Source="{Binding Image}"
+                                               WidthRequest="80"
+                                               HeightRequest="60"
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center"
+                                               Clip="RoundRectangleGeometry CornerRadius=8 Rect=0,0,100,80" />
+                                        <Label Text="{Binding Name}"
+                                               FontSize="13"
+                                               LineBreakMode="TailTruncation"
+                                               HorizontalTextAlignment="Center" />
+                                        <Label Text="{Binding Price, StringFormat='${0:F2}'}"
+                                               FontAttributes="Bold"
+                                               FontSize="12"
+                                               TextColor="#2E7D32"
+                                               HorizontalTextAlignment="Center" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </listView:SfListView.ItemTemplate>
+    </listView:SfListView>
+</ContentPage>
